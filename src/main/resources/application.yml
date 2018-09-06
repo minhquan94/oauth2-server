@@ -1,0 +1,59 @@
+server:
+  port: 8081
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  application:
+    name: oauth2-server
+  mvc:
+    favicon:
+      enabled: false
+  thymeleaf:
+    mode: HTML
+    cache: false
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+  main:
+    banner-mode: 'off'
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:file:./src/main/resources/h2db/h2_database;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS OAUTH2
+    platform: h2
+    username: sa
+    password: null
+    driver-class-name: org.h2.Driver
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        default_schema: OAUTH2
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: false
+        web-allow-others: false
+logging:
+  config: classpath:log4j2.properties
+  register-shutdown-hook: false
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+    client:
+      authenticationScheme: header
