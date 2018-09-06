@@ -3,13 +3,9 @@
  */
 package com.web.security.oauth2.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.web.security.oauth2.utils.WebUtils;
 
 /**
  * The Class MainController.
@@ -18,9 +14,6 @@ import com.web.security.oauth2.utils.WebUtils;
  */
 @Controller
 public class MainController {
-
-  /** The Constant LOG. */
-  private static final Logger LOG = LoggerFactory.getLogger(MainController.class);
 
   /** The Constant INDEX. */
   private static final String INDEX = "index";
@@ -36,14 +29,32 @@ public class MainController {
   }
 
   /**
+   * Home.
+   *
+   * @return the string
+   */
+  @RequestMapping(value = "/home")
+  public String home() {
+    return INDEX;
+  }
+
+  /**
+   * Logout.
+   *
+   * @return the string
+   */
+  @RequestMapping(value = "/logout")
+  public String logout() {
+    return INDEX;
+  }
+
+  /**
    * Login.
    *
    * @return the string
    */
   @GetMapping(value = {"/login" })
   public String login() {
-    LOG.info("Go to login, IP: {}", WebUtils.getIp());
     return INDEX;
   }
-
 }

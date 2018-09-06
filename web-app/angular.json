@@ -5,7 +5,7 @@
   "projects": {
     "web-flux": {
       "root": "",
-      "sourceRoot": "src/main/webapp",
+      "sourceRoot": "src",
       "projectType": "application",
       "architect": {}
     }
@@ -19,12 +19,12 @@
       "inlineStyle": true,
       "inlineTemplate": false,
       "spec": false,
-      "prefix": "jhi",
+      "prefix": "app",
       "styleExt": "css"
     },
     "@schematics/angular:directive": {
       "spec": false,
-      "prefix": "jhi"
+      "prefix": "app"
     },
     "@schematics/angular:guard": {
       "spec": false

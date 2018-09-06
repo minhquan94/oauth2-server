@@ -27,6 +27,7 @@ public class UserOverviewDto implements Serializable {
    * Instantiates a new user overview dto.
    */
   public UserOverviewDto() {
+    //do nothing
   }
 
   /**

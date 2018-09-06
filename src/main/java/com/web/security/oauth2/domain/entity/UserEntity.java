@@ -1,11 +1,10 @@
 /*
- * Copyright (c) 2018 Zuan_Wiko
+ * (C) Copyright Zuan 2018. All rights reserved. Proprietary and confidential.
  */
 package com.web.security.oauth2.domain.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.web.security.oauth2.utils.GuidGeneratorUtils;
 
 /**
  * The Class CustomUserDetail.
@@ -61,7 +62,7 @@ public class UserEntity implements Serializable {
 
   /** The guid. */
   @Column(name = "guid", nullable = false)
-  private String guid;
+  private final String guid = GuidGeneratorUtils.generate();
 
   /** The archived. */
   @Column(name = "archived")
@@ -73,7 +74,7 @@ public class UserEntity implements Serializable {
 
   /** The privileges. */
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-  private final List<UserPrivilegeEntity> privileges = new ArrayList<>();
+  private List<UserPrivilegeEntity> privileges;
 
   /**
    * The domain create time.
@@ -287,6 +288,16 @@ public class UserEntity implements Serializable {
    */
   public List<UserPrivilegeEntity> getPrivileges() {
     return privileges;
+  }
+
+  /**
+   * Sets the privileges.
+   *
+   * @param privileges
+   *          the new privileges
+   */
+  public void setPrivileges(List<UserPrivilegeEntity> privileges) {
+    this.privileges = privileges;
   }
 
 }

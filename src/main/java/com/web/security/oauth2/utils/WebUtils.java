@@ -12,13 +12,20 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author <a href="mailto:minhquan9402@gmail.com">zuan_</a>
  */
-public abstract class WebUtils {
+public final class WebUtils {
 
   /** The Constant UTF_8. */
   public static final String UTF_8 = "UTF-8";
 
   /** The ip thread local. */
   private static ThreadLocal<String> ipThreadLocal = new ThreadLocal<>();
+
+  /**
+   * Instantiates a new web utils.
+   */
+  private WebUtils() {
+    // do nothing
+  }
 
   /**
    * Sets the ip.
@@ -37,14 +44,6 @@ public abstract class WebUtils {
    */
   public static String getIp() {
     return ipThreadLocal.get();
-  }
-
-  /**
-   * Instantiates a new web utils.
-   */
-  // private
-  private WebUtils() {
-    // do nothing
   }
 
   /**

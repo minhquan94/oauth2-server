@@ -27,7 +27,7 @@ public final class PasswordCodecUtils {
    * @return the string
    */
   public static String encode(String password) {
-    final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    return encoder.encode(password);
+    final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    return bCryptPasswordEncoder.encode(password);
   }
 }

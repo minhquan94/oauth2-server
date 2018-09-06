@@ -3,6 +3,7 @@
  */
 package com.web.security.oauth2.utils;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -74,4 +75,12 @@ public abstract class DateUtils {
     return date.format(DateTimeFormatter.ofPattern(pattern, Locale.SIMPLIFIED_CHINESE));
   }
 
+  /**
+   * Get current timestamp.
+   *
+   * @return the timestamp
+   */
+  public static Timestamp currentTimestamp() {
+    return new Timestamp(System.currentTimeMillis());
+  }
 }

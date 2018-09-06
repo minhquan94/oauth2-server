@@ -16,10 +16,9 @@ const ENV = 'development';
 module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
     devtool: 'eval-source-map',
     devServer: {
-        contentBase: '../src/main/resources/templates',
+        contentBase: '../src/main/resources/static',
         proxy: [{
             context: [
-                /* jhipster-needle-add-entity-to-webpack - JHipster will add entity api paths here */
                 '/api',
                 '/management',
                 '/swagger-resources',
@@ -42,9 +41,9 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         main: './src/main'
     },
     output: {
-        path: utils.root('../src/main/resources/templates'),
-        filename: 'app/[name].bundle.js',
-        chunkFilename: 'app/[id].chunk.js'
+        path: utils.root('../src/main/resources/static'),
+        filename: 'js/[name].bundle.js',
+        chunkFilename: 'js/[id].chunk.js'
     },
     module: {
         rules: [{
@@ -109,7 +108,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         }),
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)/,
-            path.resolve(__dirname, '../src/main/resources/templates')
+            path.resolve(__dirname, '../src/main/resources/static')
         ),
         new writeFilePlugin(),
         new webpack.WatchIgnorePlugin([
